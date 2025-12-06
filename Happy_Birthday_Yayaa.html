@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Yaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            padding: 20px;
+        }
+        
+        .birthday-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6b8b;
+            border-radius: 50%;
+            top: -10px;
+        }
+        
+        .header {
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            color: #ff6b8b;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .birthday-person {
+            color: #5a67d8;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .cake-container {
+            margin: 30px 0;
+            position: relative;
+            height: 150px;
+        }
+        
+        .cake {
+            position: relative;
+            width: 180px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        
+        .layer {
+            position: absolute;
+            background-color: #ffcccb;
+            border-radius: 10px;
+        }
+        
+        .layer-bottom {
+            width: 180px;
+            height: 60px;
+            bottom: 0;
+            background-color: #ff9999;
+        }
+        
+        .layer-middle {
+            width: 150px;
+            height: 50px;
+            bottom: 50px;
+            left: 15px;
+            background-color: #ffb3b3;
+        }
+        
+        .layer-top {
+            width: 120px;
+            height: 40px;
+            bottom: 90px;
+            left: 30px;
+            background-color: #ffcccc;
+        }
+        
+        .candle {
+            position: absolute;
+            width: 6px;
+            height: 30px;
+            background-color: #ffd700;
+            border-radius: 3px;
+            bottom: 110px;
+            left: 87px;
+        }
+        
+        .flame {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background-color: #ff9900;
+            border-radius: 50% 50% 20% 20%;
+            bottom: 140px;
+            left: 82px;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        .balloons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        
+        .balloon {
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .balloon:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background-color: #aaa;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .balloon:nth-child(1) { background-color: #ff6b8b; }
+        .balloon:nth-child(2) { background-color: #5a67d8; }
+        .balloon:nth-child(3) { background-color: #48bb78; }
+        
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+            color: #777;
+        }
+        
+        .wish-button {
+            background-color: #ff6b8b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 139, 0.3);
+        }
+        
+        .wish-button:hover {
+            background-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 139, 0.4);
+        }
+        
+        .hidden-message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f9ff;
+            border-radius: 10px;
+            display: none;
+            color: #2d3748;
+            font-size: 1.1rem;
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 600px) {
+            .birthday-card {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .birthday-person {
+                font-size: 1.5rem;
+            }
+            
+            .cake {
+                transform: scale(0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-card">
+        <div class="header">
+            <h1> Happy Birthday Babyy! <i class="fas fa-birthday-cake"></i></h1>
+            <h2 class="birthday-person" id="birthdayName">Dear Yaya</h2>
+            <p class="message">Wishing you a day filled with happiness, joy, and all the things that make you smile. May this special day bring you endless moments of love and laughter!</p>
+        </div>
+        <br>
+        
+        <div class="cake-container">
+            <div class="cake">
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+            <br>
+            <div>
+              <p>I love you soo much babyyy!!!</p>
+            </div>
+        </div>
+        
+        <div class="balloons">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+        </div>
+        <br>
+        <br>
+        <button class="wish-button" id="wishButton">Click for a Special Wish!</button>
+        
+        <div class="hidden-message" id="specialMessage">
+            <i class="fas fa-heart" style="color: #ff6b8b; margin-right: 8px;"></i>
+            On your special day, I want you to know just how much you mean to me. You're not just my girlfriend... you're my best friend, my confidante, my greatest adventure, and the reason I smile so much. Your smile lights up my world, and your heart is the most beautiful place I've ever known.
+
+            I wish you a day as wonderful as you are... filled with joy, laughter, love, and all the happiness you deserve. May this new chapter bring you everything you dream of and more. Thank you for being you, for loving me, and for making every day better just by being in it.
+
+            You deserve the world, and today, I hope you feel how incredibly special you are to everyone who knows you. Especially to me.
+        </div>
+        
+        <div class="footer">
+            <p>Made with love for your special day</p>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            const card = document.querySelector('.birthday-card');
+            const colors = ['#ff6b8b', '#5a67d8', '#48bb78', '#ffd700', '#ff9900'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.opacity = Math.random() * 0.5 + 0.5;
+                
+                card.appendChild(confetti);
+                
+                // Animate confetti falling
+                const animationDuration = Math.random() * 3 + 2;
+                confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${card.offsetHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: animationDuration * 1000,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+        }
+        
+        // Add interactivity
+        document.getElementById('wishButton').addEventListener('click', function() {
+            const specialMessage = document.getElementById('specialMessage');
+            const birthdayName = document.getElementById('birthdayName');
+            
+            // Show the hidden message with animation
+            specialMessage.style.display = 'block';
+            
+            // Change the button text
+            this.textContent = 'Happy Birthday!';
+            this.style.backgroundColor = '#5a67d8';
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Add sound effect (using a simple beep)
+            playBirthdaySound();
+        });
+        
+        // Function to play a simple birthday sound
+        function playBirthdaySound() {
+            // Create audio context for a simple tune
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const playNote = (frequency, startTime, duration) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(0.3, startTime + 0.01);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + duration);
+            };
+            
+            // Play "Happy Birthday" notes
+            const notes = [392, 392, 440, 392, 523, 494];
+            const noteDuration = 0.3;
+            let startTime = audioContext.currentTime + 0.1;
+            
+            for (let i = 0; i < notes.length; i++) {
+                playNote(notes[i], startTime, noteDuration);
+                startTime += noteDuration;
+            }
+        }
+        
+        // Personalize the card with a name from URL or prompt
+        function personalizeCard() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let name = urlParams.get('name');
+            
+            if (!name) {
+                // For demo purposes, we'll use a prompt
+                // In a real scenario, you might want to remove this
+                name = prompt("Enter the birthday person's name:", "Dear Yaya");
+            }
+            
+            if (name && name.trim() !== "") {
+                document.getElementById('birthdayName').textContent = name;
+            }
+        }
+        
+        // Initialize the card
+        personalizeCard();
+        
+        // Add some initial confetti when page loads
+        setTimeout(createConfetti, 500);
+    </script>
+</body>
+</html>
